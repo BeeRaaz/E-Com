@@ -2,10 +2,12 @@ import { Link } from "react-router-dom";
 import Container from "./Container";
 import { useContext, useState } from "react";
 import { ThemeContext } from "../contexts/ThemeContext";
+import { CartContext } from "../contexts/CartContext";
 
 const Header = () => {
   const [isNavActive, setIsNavActive] = useState<boolean>(false);
-  const { theme } = useContext(ThemeContext) || {};
+  const { theme } = useContext(ThemeContext);
+  const { getCartCount } = useContext(CartContext);
 
   const initNav = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -54,7 +56,7 @@ const Header = () => {
             to={"/cart"}
             className="text-2xl font-normal md:text-3xl md:font-semibold ms-auto"
           >
-            Cart{"(0)"}
+            Cart({getCartCount()})
           </Link>
         </div>
       </Container>

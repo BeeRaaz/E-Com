@@ -1,7 +1,10 @@
 import { createContext, useEffect, useState } from "react";
 import { ThemeContextData, ThemeProviderProps } from "../types/Theme";
 
-export const ThemeContext = createContext<ThemeContextData | undefined>(undefined);
+export const ThemeContext = createContext<ThemeContextData>({
+    theme: 'light',
+    toggleTheme: () => {},
+});
 
 export const ThemeProvider = ({ children }: ThemeProviderProps) => {
 
